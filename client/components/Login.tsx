@@ -14,7 +14,7 @@ class Login extends Component<any, any> {
         const code = this.parseCode();
 
         if (code) {
-            axios.post('http://localhost:3000/auth', { code })
+            axios.post(`${process.env.URI}/auth`, { code })
                 .then(({ data: { token_type, access_token } }: any) => {
                     const bearer = `${token_type} ${access_token}`;
                     this.props.setBearer(bearer);

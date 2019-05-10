@@ -5,9 +5,9 @@ import { AuthConsumer } from './Auth';
 const ProtectedRoute = ({ component: Component, ...rest }: any) => (
     <AuthConsumer>
         {({ bearer }) => (
-            <Route {...rest} render={props =>
+            <Route render={props =>
                 bearer ?
-                    <Component {...props} bearer={bearer} />
+                    <Component {...props} {...rest} bearer={bearer}  />
                     : <Redirect to="/login" />
             }
             />

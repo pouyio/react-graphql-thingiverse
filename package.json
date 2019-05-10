@@ -27,7 +27,11 @@
     "@types/react": "^16.8.16",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
     "apollo-datasource-rest": "^0.4.0",
+    "apollo-link-context": "^1.0.17",
+    "apollo-link-http": "^1.5.14",
     "apollo-server-express": "^2.5.0",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
@@ -39,6 +43,7 @@
     "ncp": "^2.0.0",
     "query-string": "^6.5.0",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0"
   }
