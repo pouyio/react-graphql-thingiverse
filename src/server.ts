@@ -8,12 +8,18 @@ import bodyParser from 'body-parser';
 import axios from 'axios';
 import { parse } from 'query-string';
 import schema from './schema';
+import ThingsAPI from './dataSource';
 
 const PORT = 3000;
 const app = express();
 
 const server = new ApolloServer({
-    schema
+    schema,
+    context: ({ req }: any) => {
+        const token = req.headers.authorization;
+        return { token };
+    },
+    dataSources: () => ({ thingsAPI: new ThingsAPI() })
 });
 
 app.use('*', cors());
