@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { DocumentNode } from 'graphql';
+import { Link } from 'react-router-dom';
 
 export default class Things extends Component<any, any> {
 
@@ -27,7 +28,10 @@ export default class Things extends Component<any, any> {
 
                         return (
                             <ul>
-                                {data[query].map(({ name, id }: any) => <li key={id}>{name}</li>)}
+                                {data[query].map(({ name, id }: any) => (
+                                    <li key={id}>
+                                        <Link to={`/thing/${id}`}>{name}</Link>
+                                    </li>))}
                             </ul>
                         )
                     }}

@@ -1,11 +1,13 @@
 import 'graphql-import-node';
-import * as typeDefs from '../schema/schema.graphql';
+import schemaDefs from '../schema/schema';
 import { makeExecutableSchema } from 'graphql-tools';
 import resolvers from './resolverMap';
 import { GraphQLSchema } from 'graphql';
+// no @types :(
+const { transpileSchema } = require('graphql-s2s').graphqls2s;
 
 const schema: GraphQLSchema = makeExecutableSchema({
-    typeDefs,
+    typeDefs: [transpileSchema(schemaDefs)],
     resolvers,
 });
 

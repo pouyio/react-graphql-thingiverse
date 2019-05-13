@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthConsumer } from './Auth';
 
-const ProtectedRoute = ({ component: Component, ...rest }: any) => (
+const ProtectedRoute = ({ component: Component, title, ...rest }: any) => (
     <AuthConsumer>
         {({ bearer }) => (
-            <Route render={props =>
+            <Route {...rest} render={props =>
                 bearer ?
-                    <Component {...props} {...rest} bearer={bearer}  />
+                    <Component {...props} {...rest} bearer={bearer} title={title} />
                     : <Redirect to="/login" />
             }
             />

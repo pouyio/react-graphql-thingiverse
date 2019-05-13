@@ -9,6 +9,7 @@ import { AuthProvider, AuthConsumer } from './Auth';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import Things from './Things';
+import Thing from './Thing';
 
 const httpLink = createHttpLink({
     uri: `${process.env.URI}/graphql`,
@@ -65,6 +66,7 @@ export default class AppRouter extends Component {
                                         <ProtectedRoute path="/newest" title="Newest" component={Things} />
                                         <ProtectedRoute path="/popular" title="Popular" component={Things} />
                                         <ProtectedRoute path="/featured" title="Featured" component={Things} />
+                                        <ProtectedRoute path="/thing/:id" component={Thing} />
                                     </Switch>
                                 </div>
                             )}

@@ -11,6 +11,9 @@ const resolverMap: IResolvers = {
         featured(root: any, args: any, { dataSources }): any[] {
             return dataSources.thingsAPI.getFeatured();
         },
+        thing(root: any, { id }: any, { dataSources }): any[] {
+            return dataSources.thingsAPI.getThing(id);
+        },
     },
 };
 
