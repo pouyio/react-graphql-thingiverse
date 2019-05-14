@@ -36,6 +36,9 @@ const StyledNavbar = styled.ul`
 const StyledNavbarContainer = styled.div`
     background: #444;
     border-bottom: 3px solid #fcff58;
+    width: 100%;
+    position: sticky;
+    top: 0;
 `;
 
 const StyledButton = styled.button`

@@ -21,5 +21,5 @@ const ProtectedRoute = ({ component: Component, title, className, ...rest }: any
 
 export default styled(ProtectedRoute)`
             max-width: 68rem;
-            margin: 0 auto;
+            margin: 2em auto 0;
 `

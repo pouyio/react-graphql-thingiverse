@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { DocumentNode } from 'graphql';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import ListThing from './ListThing';
+
+const StyledGrid = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-end;
+
+`
 
 export default class Things extends Component<any, any> {
 
@@ -17,22 +26,23 @@ export default class Things extends Component<any, any> {
     }
 
     render() {
-        const query = this.props.title.toLowerCase();
+        const query = this.props.type;
         return (
             <div>
-                <h1>{this.props.title}</h1>
                 <Query query={this.getGQL(query)}>
                     {({ loading, error, data }: any) => {
                         if (error) return <h1> ERROR!</h1>
                         if (loading || !data) return <h1>LOADING</h1>;
 
                         return (
-                            <ul>
-                                {data[query].map(({ name, id }: any) => (
-                                    <li key={id}>
-                                        <Link to={`/thing/${id}`}>{name}</Link>
-                                    </li>))}
-                            </ul>
+                            <StyledGrid>
+                                {data[query].map(({ name, id, thumbnail }: any) =>
+                                    <ListThing
+                                        key={id}
+                                        name={name}
+                                        id={id}
+                                        thumbnail={thumbnail} />)}
+                            </StyledGrid>
                         )
                     }}
                 </Query>

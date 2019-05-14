@@ -51,9 +51,9 @@ export default class AppRouter extends Component {
                                             render={(props) => <Login {...props} setBearer={setBearer} />}
                                         />
                                         <Route exact path="/" render={() => <Redirect to="/newest" />} />
-                                        <ProtectedRoute path="/newest" title="Newest" component={Things} />
-                                        <ProtectedRoute path="/popular" title="Popular" component={Things} />
-                                        <ProtectedRoute path="/featured" title="Featured" component={Things} />
+                                        <ProtectedRoute path="/newest" type="newest" component={Things} />
+                                        <ProtectedRoute path="/popular" type="popular" component={Things} />
+                                        <ProtectedRoute path="/featured" type="featured" component={Things} />
                                         <ProtectedRoute path="/thing/:id" component={Thing} />
                                     </Switch>
                                 </div>
