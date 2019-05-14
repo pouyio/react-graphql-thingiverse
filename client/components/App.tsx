@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, Redirect, NavLink } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
@@ -10,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
 import Things from './Things';
 import Thing from './Thing';
+import Navbar from './Navbar';
 
 const httpLink = createHttpLink({
     uri: `${process.env.URI}/graphql`,
@@ -41,20 +42,7 @@ export default class AppRouter extends Component {
                             {({ bearer, setBearer, removeBearer }) => (
                                 <div>
                                     {bearer ?
-                                        <ul>
-                                            <li>
-                                                <Link to="/newest">Newest</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/popular">Popular</Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/featured">Featured</Link>
-                                            </li>
-                                            <li>
-                                                <button onClick={() => removeBearer()}> Logout </button>
-                                            </li>
-                                        </ul>
+                                        <Navbar logout={() => removeBearer()}/>
                                         : <a href={`https://www.thingiverse.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&response_type=code`}>Log in</a>
                                     }
                                     <Switch>
