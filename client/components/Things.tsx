@@ -20,7 +20,11 @@ export default class Things extends Component<any, any> {
             ${query} {
                 id,
                 name,
-                thumbnail
+                thumbnail,
+                creator {
+                    name,
+                    thumbnail
+                }
             }
         }`
     }
@@ -36,11 +40,12 @@ export default class Things extends Component<any, any> {
 
                         return (
                             <StyledGrid>
-                                {data[query].map(({ name, id, thumbnail }: any) =>
+                                {data[query].map(({ name, id, thumbnail, creator }: any) =>
                                     <ListThing
                                         key={id}
-                                        name={name}
                                         id={id}
+                                        name={name}
+                                        creator={creator}
                                         thumbnail={thumbnail} />)}
                             </StyledGrid>
                         )
