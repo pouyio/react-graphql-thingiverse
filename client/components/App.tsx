@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route, Link, Redirect, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
@@ -11,6 +11,7 @@ import Login from './Login';
 import Things from './Things';
 import Thing from './Thing';
 import Navbar from './Navbar';
+import Logout from './Logout';
 
 const httpLink = createHttpLink({
     uri: `${process.env.URI}/graphql`,
@@ -43,13 +44,14 @@ export default class AppRouter extends Component {
                                 <div>
                                     {bearer ?
                                         <Navbar logout={() => removeBearer()}/>
-                                        : <a href={`https://www.thingiverse.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&response_type=code`}>Log in</a>
+                                        : ''
                                     }
                                     <Switch>
                                         <Route
                                             path="/login"
                                             render={(props) => <Login {...props} setBearer={setBearer} />}
                                         />
+                                        <Route path="/logout" component={Logout} />} />
                                         <Route exact path="/" render={() => <Redirect to="/newest" />} />
                                         <ProtectedRoute path="/newest" type="newest" component={Things} />
                                         <ProtectedRoute path="/popular" type="popular" component={Things} />

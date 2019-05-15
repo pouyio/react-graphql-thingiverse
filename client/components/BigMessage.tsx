@@ -5,7 +5,6 @@ const StyledBigMessage = styled.h1`
     text-align: center;
 `;
 
-
 export default function BigMessage(props: any) {
-    return <StyledBigMessage {...props}>{props.text}</StyledBigMessage>;
+    return <StyledBigMessage>{props.text || props.children}</StyledBigMessage>;
 }

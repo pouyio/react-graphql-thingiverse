@@ -11,7 +11,7 @@ const ProtectedRoute = ({ component: Component, title, className, ...rest }: any
                     <div className={className}>
                         <Component {...props} {...rest} bearer={bearer} title={title} />
                     </div>
-                    : <Redirect to="/login" />
+                    : <Redirect to="/logout" />
             }
             />
         )}
@@ -20,6 +20,6 @@ const ProtectedRoute = ({ component: Component, title, className, ...rest }: any
 
 
 export default styled(ProtectedRoute)`
-            max-width: 68rem;
-            margin: 2em auto 0;
-`
+    max-width: 68rem;
+    margin: 2em auto 0;
+`;
