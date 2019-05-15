@@ -49,7 +49,7 @@ const StyledButton = styled.button`
     font-size: 1em;
 `;
 
-export default function Navbar(props: any) {
+export default function Navbar(props: {logout: Function}) {
     return (
         <StyledNavbarContainer>
             <StyledNavbar>

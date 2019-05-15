@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
-import { withRouter } from 'react-router';
+import { withRouter, RouteComponentProps, StaticContext } from 'react-router';
 import BigMessage from './BigMessage';
 
-class Login extends Component<any, any> {
+
+interface LoginProps extends RouteComponentProps<any, StaticContext, any> {
+    setBearer: Function
+}
+
+class Login extends Component<LoginProps> {
 
     parseCode() {
         const { code = '' } = queryString.parse(this.props.location.search);
@@ -16,7 +21,7 @@ class Login extends Component<any, any> {
 
         if (code) {
             axios.post(`${process.env.URI}/auth`, { code })
-                .then(({ data: { token_type, access_token } }: any) => {
+                .then(({ data: { token_type, access_token } }) => {
                     const bearer = `${token_type} ${access_token}`;
                     this.props.setBearer(bearer);
                     this.props.history.push('/');
@@ -27,7 +32,7 @@ class Login extends Component<any, any> {
     }
 
     render() {
-        return  <BigMessage text="Logging in 📨" />;
+        return <BigMessage text="Logging in 📨" />;
     }
 }
 

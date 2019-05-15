@@ -6,6 +6,10 @@ interface AuthContextInterface {
     removeBearer: Function
 }
 
+interface AuthState {
+    bearer: string
+}
+
 const defaultAuthContext: AuthContextInterface = {
     bearer: '',
     setBearer: () => {},
@@ -15,11 +19,11 @@ const defaultAuthContext: AuthContextInterface = {
 
 const { Provider, Consumer } = createContext<AuthContextInterface>(defaultAuthContext);
 
-class AuthProvider extends Component {
+class AuthProvider extends Component<{}, AuthState> {
 
     state = { bearer: '' }
 
-    constructor(props: any) {
+    constructor(props: {}) {
         super(props);
         this.state.bearer = localStorage.getItem('bearer') || '';
         this.setBearer = this.setBearer.bind(this);

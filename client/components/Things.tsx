@@ -5,6 +5,13 @@ import { DocumentNode } from 'graphql';
 import styled from 'styled-components';
 import ListThing from './ListThing';
 import BigMessage from './BigMessage';
+import { ThingModel } from './Thing';
+
+interface Data {
+    newest?: ThingModel[];
+    popular?: ThingModel[];
+    featured?: ThingModel[];
+}
 
 const StyledGrid = styled.section`
     display: flex;
@@ -13,7 +20,7 @@ const StyledGrid = styled.section`
     align-items: flex-end;
 `;
 
-export default class Things extends Component<any, any> {
+export default class Things extends Component<{type: 'newest' | 'popular' | 'featured'}> {
 
     getGQL(query: string): DocumentNode {
         return gql`{
@@ -33,14 +40,14 @@ export default class Things extends Component<any, any> {
         const query = this.props.type;
         return (
             <div>
-                <Query query={this.getGQL(query)}>
-                    {({ loading, error, data }: any) => {
+                <Query<Data> query={this.getGQL(query)}>
+                    {({ loading, error, data }) => {
                         if (error) return <BigMessage text="Error! 🚨" />;
                         if (loading || !data) return <BigMessage text="Loading... ⌛️" />;
 
                         return (
                             <StyledGrid>
-                                {data[query].map(({ name, id, thumbnail, creator }: any) =>
+                                {data[query].map(({ name, id, thumbnail, creator }) =>
                                     <ListThing
                                         key={id}
                                         id={id}

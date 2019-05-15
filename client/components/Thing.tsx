@@ -5,6 +5,30 @@ import { DocumentNode } from 'graphql';
 import BigMessage from './BigMessage';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
+import { Creator } from './ListThing';
+import { RouteComponentProps } from 'react-router';
+
+export interface ThingModel {
+    id: number;
+    name: string;
+    creator: Creator;
+    details: string;
+    description_html: string;
+    thumbnail: string;
+    like_count: number;
+    file_count: number;
+    download_count: number;
+    view_count: number;
+    public_url: string;
+}
+
+interface Data {
+    thing: ThingModel;
+}
+
+interface PathParamsType {
+    id: string,
+}
 
 const StyledElement = styled.article`
     overflow: hidden;
@@ -28,7 +52,7 @@ const StyledCreatorImg = styled.img`
     margin-right: .3em;
 `;
 
-export default class Thing extends Component<any, any> {
+export default class Thing extends Component<RouteComponentProps<PathParamsType>> {
 
     get query(): DocumentNode {
         return gql`{
@@ -53,8 +77,8 @@ export default class Thing extends Component<any, any> {
 
     render() {
         return (
-            <Query query={this.query}>
-                {({ loading, error, data: { thing } }: any) => {
+            <Query<Data> query={this.query}>
+                {({ loading, error, data: {thing} }) => {
                     if (error) return <BigMessage text="Error! 🚨" />;
                     if (loading || !thing) return <BigMessage text="Loading... ⌛" />;
 

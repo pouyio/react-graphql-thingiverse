@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node 'dist/server.js'",
-    "build": "tsc -p .",
+    "build": "npm run build:back & npm run build:front",
+    "build:back": "tsc -p .",
+    "build:front": "parcel build client/index.html",
     "start:dev": "parcel client/index.html & nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql"
   },
   "keywords": [],

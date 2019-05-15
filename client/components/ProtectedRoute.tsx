@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthConsumer } from './Auth';
 import styled from 'styled-components';
 
-const ProtectedRoute = ({ component: Component, title, className, ...rest }: any) => (
+const ProtectedRoute = ({ component: Component, title, className, ...rest }) => (
     <AuthConsumer>
         {({ bearer }) => (
             <Route {...rest} render={props =>
