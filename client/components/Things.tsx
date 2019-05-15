@@ -11,8 +11,7 @@ const StyledGrid = styled.section`
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-end;
-
-`
+`;
 
 export default class Things extends Component<any, any> {
 
