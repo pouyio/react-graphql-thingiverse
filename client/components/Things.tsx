@@ -36,7 +36,7 @@ export default class Things extends Component<any, any> {
                 <Query query={this.getGQL(query)}>
                     {({ loading, error, data }: any) => {
                         if (error) return <h1> ERROR!</h1>
-                        if (loading || !data) return <h1>LOADING</h1>;
+                        if (loading || !data) return <h1 style={{position: 'absolute', left: 'calc(50% - 3em)'}}>LOADING ⌛️</h1>;
 
                         return (
                             <StyledGrid>

@@ -11,8 +11,7 @@ const StyledElement = styled.article`
     box-shadow: #000000bd 0 0 3px;
     border-radius: .3em;
     margin: .2em;
-    
-    `
+`;
 
 const StyledText = styled.p`
     padding: .2em;
