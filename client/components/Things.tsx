@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { DocumentNode } from 'graphql';
 import styled from 'styled-components';
 import ListThing from './ListThing';
+import BigMessage from './BigMessage';
 
 const StyledGrid = styled.section`
     display: flex;
@@ -35,8 +36,8 @@ export default class Things extends Component<any, any> {
             <div>
                 <Query query={this.getGQL(query)}>
                     {({ loading, error, data }: any) => {
-                        if (error) return <h1> ERROR!</h1>
-                        if (loading || !data) return <h1 style={{position: 'absolute', left: 'calc(50% - 3em)'}}>LOADING ⌛️</h1>;
+                        if (error) return <BigMessage text="Error! 🚨" />;
+                        if (loading || !data) return <BigMessage text="Loading... ⌛️" />;
 
                         return (
                             <StyledGrid>

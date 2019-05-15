@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import BigMessage from './BigMessage';
 
 class Login extends Component<any, any> {
 
@@ -26,7 +27,7 @@ class Login extends Component<any, any> {
     }
 
     render() {
-        return <h1>Loggin in ⌛️</h1>;
+        return  <BigMessage text="Logging in 📨" />;
     }
 }
 

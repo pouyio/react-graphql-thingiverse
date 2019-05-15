@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { DocumentNode } from 'graphql';
+import BigMessage from './BigMessage';
 
 export default class Thing extends Component<any, any> {
 
@@ -27,8 +28,8 @@ export default class Thing extends Component<any, any> {
                 <h2>Thing Detail {id}</h2>
                 <Query query={this.query}>
                     {({ loading, error, data }: any) => {
-                        if (error) return <h1> ERROR!</h1>
-                        if (loading || !data) return <h1>LOADING ⌛</h1>;
+                        if (error) return <BigMessage text="Error! 🚨" />;
+                        if (loading || !data) return <BigMessage text="Loading... ⌛" />;
 
                         return (
                             <h2>{data.thing.name}</h2>
