@@ -5,7 +5,7 @@ import { withRouter, RouteComponentProps, StaticContext } from 'react-router';
 import BigMessage from './BigMessage';
 
 
-interface LoginProps extends RouteComponentProps<any, StaticContext, any> {
+interface LoginProps extends RouteComponentProps<any, StaticContext> {
     setBearer: Function
 }
 
