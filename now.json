@@ -1,9 +1,9 @@
 {
     "version": 1,
     "env": {
-        "CLIENT_ID": "@CLIENT_ID_THINGIVERSE",
-        "CLIENT_SECRET": "@CLIENT_SECRET_THINGIVERSE",
-        "URI": "@URI_THINGIVERSE"
+        "CLIENT_ID": "@client_id_thingiverse",
+        "CLIENT_SECRET": "@client_secret_thingiverse",
+        "URI": "@uri_thingiverse"
     },
     "regions": [
         "bru"
