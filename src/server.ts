@@ -15,7 +15,7 @@ const app = express();
 
 const server = new ApolloServer({
     schema,
-    context: ({ req }: any) => {
+    context: ({ req }) => {
         const token = req.headers.authorization;
         return { token };
     },

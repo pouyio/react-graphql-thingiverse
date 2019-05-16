@@ -10,19 +10,19 @@ export default class ThingsAPI extends RESTDataSource {
         request.headers.set('Authorization', this.context.token);
     }
 
-    async getNewest() {
+    getNewest() {
         return this.get('newest');
     }
 
-    async getPopular() {
+    getPopular() {
         return this.get('popular');
     }
 
-    async getFeatured() {
+    getFeatured() {
         return this.get('featured');
     }
 
-    async getThing(id: number) {
+    getThing(id: number) {
         return this.get(`things/${id}`);
     }
 };

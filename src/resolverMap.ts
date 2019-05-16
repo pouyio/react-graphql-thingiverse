@@ -2,16 +2,16 @@ import { IResolvers } from 'graphql-tools';
 
 const resolverMap: IResolvers = {
     Query: {
-        newest(root: any, args: any, { dataSources }): any[] {
+        newest(root, args, { dataSources }) {
             return dataSources.thingsAPI.getNewest();
         },
-        popular(root: any, args: any, { dataSources }): any[] {
+        popular(root, args, { dataSources }) {
             return dataSources.thingsAPI.getPopular();
         },
-        featured(root: any, args: any, { dataSources }): any[] {
+        featured(root, args, { dataSources }) {
             return dataSources.thingsAPI.getFeatured();
         },
-        thing(root: any, { id }: any, { dataSources }): any[] {
+        thing(root, { id }, { dataSources }) {
             return dataSources.thingsAPI.getThing(id);
         },
     },
