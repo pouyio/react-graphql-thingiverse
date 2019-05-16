@@ -7,6 +7,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import { parse } from 'query-string';
+import path from 'path';
 import schema from './schema';
 import ThingsAPI from './dataSource';
 
@@ -25,6 +26,7 @@ const server = new ApolloServer({
 app.use('*', cors());
 app.use(compression());
 app.use(bodyParser.json());
+app.use(express.static('dist'));
 
 app.post('/auth', (req, res) => {
     axios.request({
@@ -39,6 +41,10 @@ app.post('/auth', (req, res) => {
         .catch(err => res.send('there was an error'));
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 server.applyMiddleware({ app, path: '/graphql' });
 
-createServer(app).listen({ port: PORT }, () => console.log(`server running on port ${PORT}`));
+createServer(app).listen({ port: PORT }, () => console.log(`server running locally on port ${PORT}`));

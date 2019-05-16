@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "alias": [
+        "react-graphql-thingiverse.now.sh"
+    ],
+    "env": {
+        "CLIENT_ID": "@client_id_thingiverse",
+        "CLIENT_SECRET": "@client_secret_thingiverse",
+        "URI": "@uri_thingiverse"
+    },
+    "regions": [
+        "bru"
+    ]
+}
