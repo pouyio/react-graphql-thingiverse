@@ -42,7 +42,7 @@ app.post('/auth', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname = 'dist/index.html'));
+    res.sendFile(path.join(__dirname + 'dist/index.html'));
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
