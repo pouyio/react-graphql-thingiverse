@@ -41,6 +41,10 @@ app.post('/auth', (req, res) => {
         .catch(err => res.send('there was an error'));
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 server.applyMiddleware({ app, path: '/graphql' });
 
 createServer(app).listen({ port: PORT }, () => console.log(`server running locally on port ${PORT}`));
