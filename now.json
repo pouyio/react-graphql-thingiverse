@@ -1,7 +1,7 @@
 {
     "version": 1,
     "alias": [
-        "https://react-graphql-thingiverse.now.sh"
+        "react-graphql-thingiverse.now.sh"
     ],
     "env": {
         "CLIENT_ID": "@client_id_thingiverse",
