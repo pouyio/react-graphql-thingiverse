@@ -7,3 +7,5 @@ You must have a Thingiverse account... don't worry, I can`t see any personal inf
 - Parcel as bundler. [ℹ️ info](http://parceljs.org)
 - Typescript everywhere. [ℹ️ info](https://www.typescriptlang.org/)
 - Now (by Zeit) for the automagic deploy. [ℹ️ info](https://zeit.co/now)
+
+![](screen.png)
