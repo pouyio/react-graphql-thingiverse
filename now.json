@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "env": {
+        "CLIENT_ID": "@CLIENT_ID_THINGIVERSE",
+        "CLIENT_SECRET": "@CLIENT_SECRET_THINGIVERSE",
+        "URI": "@URI_THINGIVERSE"
+    },
+    "regions": [
+        "bru"
+    ]
+}
